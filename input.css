@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Base HTML and Body Styles */
-html {
-    font-size: 80%;
-}
 
 body {
     background-color: #050914; /* deep-space */
