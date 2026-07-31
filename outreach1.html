@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STEM Engagement | Notre Dame Rocketry Team</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-space': '#050914',
+                        'nd-blue': '#0C2340',
+                        'dome-gold': '#C99700',
+                        'metal-gold': '#AE9142',
+                        'irish-green': '#00843D'
+                    },
+                    fontFamily: {
+                        'space': ['Orbitron', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'outreach-hero': "linear-gradient(to bottom, rgba(5, 9, 20, 0.7), rgba(5, 9, 20, 1)), url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80')",
+                        'blueprint-pattern': "linear-gradient(to right, rgba(5, 9, 20, 0.95), rgba(12, 35, 64, 0.9)), url('https://www.transparenttextures.com/patterns/blueprint.png')"
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #050914;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050914; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0C2340; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #AE9142; 
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        /* Infinite Scroll Animation for Gallery */
+        @keyframes infinite-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } 
+        }
+        .scroll-track {
+            display: flex;
+            width: max-content;
+            animation: infinite-scroll 40s linear infinite;
+        }
+        .scroll-track:hover {
+            animation-play-state: paused;
+        }
+        
+        /* Custom form inputs */
+        .nd-input {
+            @apply w-full bg-nd-blue/20 border border-nd-blue rounded-md px-4 py-3 text-white font-inter text-sm font-light focus:outline-none focus:border-dome-gold focus:ring-1 focus:ring-dome-gold transition-all;
+        }
+    </style>
+</head>
+<body class="font-inter antialiased selection:bg-dome-gold selection:text-deep-space">
+
+<!-- Navigation -->
+<nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-8 px-6 md:px-12 flex justify-between items-center bg-deep-space/80 backdrop-blur-md border-b border-nd-blue/20">
+    <!-- Logos Container -->
+    <div class="flex items-center gap-4 md:gap-8">
+        <a href="index.html" class="flex items-center cursor-pointer">
+            <img id="nav-logo" src="NDRT logo white.png" alt="NDRT Logo" class="h-16 w-auto drop-shadow-md transition-all duration-300">
+        </a>
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="hidden lg:flex items-center gap-8 font-space text-base font-bold tracking-widest uppercase">
+        <a href="index.html" class="text-white hover:text-dome-gold transition-colors duration-300">HOME</a>
+
+        <!-- About Dropdown -->
+        <div class="relative group py-2">
+            <button class="text-white hover:text-dome-gold transition-colors duration-300 flex items-center gap-2 focus:outline-none">
+                ABOUT <i class="fa-solid fa-chevron-down text-xs"></i>
+            </button>
+            <div class="absolute top-full left-0 mt-0 w-48 bg-deep-space/95 backdrop-blur-md border border-nd-blue rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col overflow-hidden font-normal">
+                <a href="about us.html" class="px-4 py-3 text-white hover:bg-nd-blue hover:text-dome-gold transition-colors">About Us</a>
+                <a href="leadership.html" class="px-4 py-3 text-white hover:bg-nd-blue hover:text-dome-gold transition-colors">Leadership</a>
+            </div>
+        </div>
+
+        <!-- Projects Dropdown -->
+        <div class="relative group py-2">
+            <button class="text-dome-gold hover:text-white transition-colors duration-300 flex items-center gap-2 focus:outline-none">
+                PROJECTS <i class="fa-solid fa-chevron-down text-xs"></i>
+            </button>
+            <div class="absolute top-full left-0 mt-0 w-52 bg-deep-space/95 backdrop-blur-md border border-nd-blue rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col overflow-hidden font-normal">
+                <a href="usli.html" class="px-4 py-3 text-white hover:bg-nd-blue hover:text-dome-gold transition-colors">USLI</a>
+                <a href="ndxp.html" class="px-4 py-3 text-white hover:bg-nd-blue hover:text-dome-gold transition-colors">NDXP</a>
+                <a href="outreach.html" class="px-4 py-3 text-dome-gold bg-nd-blue/30 hover:bg-nd-blue transition-colors">OUTREACH</a>
+            </div>
+        </div>
+
+        <a href="join us.html" class="text-white hover:text-dome-gold transition-colors duration-300">JOIN US</a>
+        <a href="contact.html" class="text-white hover:text-dome-gold transition-colors duration-300">CONTACT</a>
+        <a href="sponsors.html" class="px-5 py-2 border border-dome-gold text-dome-gold rounded-md hover:bg-dome-gold hover:text-deep-space transition-all duration-300">SPONSORS</a>
+    </div>
+</nav>
+
+<!-- Hero Header -->
+<header class="relative pt-40 pb-32 w-full bg-outreach-hero bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center text-center px-4 border-b border-nd-blue">
+    <div class="max-w-4xl mt-12">
+        <h1 class="reveal delay-100 font-space font-black text-5xl md:text-7xl tracking-tight text-white mb-4 uppercase">
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-dome-gold to-metal-gold">STEM</span> Engagement
+        </h1>
+        <p class="reveal delay-200 font-space text-lg text-gray-300 mb-6 tracking-widest uppercase">
+            Notre Dame Rocketry Outreach Team
+        </p>
+        <p class="reveal delay-300 font-inter text-lg text-gray-400 max-w-2xl mx-auto font-light mb-10">
+            Bringing the thrill of aerospace design and engineering discoveries directly into local classrooms and community spaces.
+        </p>
+    </div>
+</header>
+
+<!-- ========================================== -->
+<!-- SECTION 1: OUR COMMITMENT & METRICS        -->
+<!-- ========================================== -->
+<section id="commitment" class="py-24 bg-deep-space border-b border-nd-blue/40">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 space-y-20">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="reveal lg:col-span-7 flex flex-col items-start space-y-6">
+                <span class="font-space text-sm tracking-widest uppercase text-dome-gold">Our Commitment</span>
+                <h2 class="font-space font-bold text-3xl md:text-4xl uppercase tracking-wider text-white">Inspiring the Surrounding Community</h2>
+                
+                <p class="font-inter text-gray-300 text-lg leading-relaxed font-light">
+                    Notre Dame Rocketry's passion for STEM extends far beyond our engineering labs on campus. The team is fully committed to giving back to the local communities of <span class="text-white font-semibold">South Bend and Mishawaka</span> through our high-impact STEM Engagement events.
+                </p>
+                <p class="font-inter text-gray-300 text-lg leading-relaxed font-light">
+                    Operated purely on a volunteer basis and heavily supported by our gracious sponsors, these interactive days provide our members with the unique opportunity to interact with excited, young minds curious about nature, science, and technical exploration.
+                </p>
+            </div>
+            
+            <!-- Strategic Data Visualization Block -->
+            <div class="reveal delay-100 lg:col-span-5 bg-nd-blue/20 border border-nd-blue p-8 rounded-lg relative overflow-hidden group text-center lg:text-left">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-dome-gold to-metal-gold"></div>
+                <div class="font-space font-black text-6xl md:text-7xl text-dome-gold tracking-tight mb-2">1,300+</div>
+                <h4 class="font-space font-bold text-lg text-white uppercase tracking-wider mb-2">Community Members Reached</h4>
+                <p class="font-inter text-sm text-gray-400 font-light">
+                    Every year, our student builders run custom, hands-on instructional workshops to motivate children across the Indiana region into modern engineering paths.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ========================================== -->
+<!-- SECTION 2: COMPACT WORKSHOP ACTIVITIES     -->
+<!-- ========================================== -->
+<section id="activities-compact" class="py-16 bg-blueprint-pattern bg-cover relative border-b border-nd-blue/40">
+    <div class="absolute inset-0 bg-deep-space/95"></div>
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center gap-10">
+        <div class="reveal md:w-1/3">
+            <h2 class="font-space font-bold text-3xl uppercase tracking-wider text-white mb-2">Curriculum</h2>
+            <div class="h-1 w-16 bg-dome-gold mb-4"></div>
+            <p class="font-inter text-gray-400 text-base font-light">
+                Depending on the age range, participating schools and local organizations can select from a wide variety of hands-on technical activities designed to teach fundamental physics and engineering.
+            </p>
+        </div>
+        <div class="reveal delay-100 md:w-2/3 flex flex-wrap gap-3">
+            <span class="px-4 py-2 bg-nd-blue/30 border border-nd-blue text-white rounded text-sm font-space uppercase tracking-wider hover:border-dome-gold/60 transition-colors">Paper Helicopters</span>
+            <span class="px-4 py-2 bg-nd-blue/30 border border-nd-blue text-white rounded text-sm font-space uppercase tracking-wider hover:border-dome-gold/60 transition-colors">Straw Rockets</span>
+            <span class="px-4 py-2 bg-nd-blue/30 border border-nd-blue text-white rounded text-sm font-space uppercase tracking-wider hover:border-dome-gold/60 transition-colors">Stomp Rockets</span>
+            <span class="px-4 py-2 bg-nd-blue/30 border border-nd-blue text-white rounded text-sm font-space uppercase tracking-wider hover:border-dome-gold/60 transition-colors">Filter Parachutes</span>
+            <span class="px-4 py-2 bg-nd-blue/30 border border-nd-blue text-white rounded text-sm font-space uppercase tracking-wider hover:border-dome-gold/60 transition-colors">Plate Planets</span>
+            <span class="px-4 py-2 bg-nd-blue/30 border border-nd-blue text-white rounded text-sm font-space uppercase tracking-wider hover:border-dome-gold/60 transition-colors">Notecard Towers</span>
+            <span class="px-4 py-2 bg-nd-blue/30 border border-nd-blue text-white rounded text-sm font-space uppercase tracking-wider hover:border-dome-gold/60 transition-colors">Spaghetti Bridges</span>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================== -->
+<!-- SECTION 3: PHOTO GALLERY SHOWCASE          -->
+<!-- ========================================== -->
+<section id="outreach-media" class="py-24 bg-[#03060d] border-b border-nd-blue/50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center mb-16">
+        <h2 class="font-space font-bold text-3xl md:text-4xl uppercase tracking-wider text-white">Outreach Gallery</h2>
+        <p class="font-inter text-gray-400 font-light mt-2">Explore photos capturing real-time engineering workshops and live launch day challenges.</p>
+    </div>
+
+    <!-- Infinite Continuous Scroll Track -->
+    <div class="relative w-full overflow-hidden mb-8">
+        <div class="scroll-track gap-4 px-4">
+            <img src="https://images.unsplash.com/photo-1564419320461-6870880221ad?auto=format&fit=crop&w=500&q=80" alt="Students building project" class="h-64 w-80 object-cover rounded-lg border border-nd-blue/40">
+            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=500&q=80" alt="Classroom instruction" class="h-64 w-80 object-cover rounded-lg border border-nd-blue/40">
+            <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=500&q=80" alt="Digital layout design lab" class="h-64 w-80 object-cover rounded-lg border border-nd-blue/40">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=500&q=80" alt="Presentation demonstration" class="h-64 w-80 object-cover rounded-lg border border-nd-blue/40">
+            
+            <!-- Duplications to feed continuous track scroll seamlessly -->
+            <img src="https://images.unsplash.com/photo-1564419320461-6870880221ad?auto=format&fit=crop&w=500&q=80" alt="Students building project" class="h-64 w-80 object-cover rounded-lg border border-nd-blue/40">
+            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=500&q=80" alt="Classroom instruction" class="h-64 w-80 object-cover rounded-lg border border-nd-blue/40">
+            <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=500&q=80" alt="Digital layout design lab" class="h-64 w-80 object-cover rounded-lg border border-nd-blue/40">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=500&q=80" alt="Presentation demonstration" class="h-64 w-80 object-cover rounded-lg border border-nd-blue/40">
+        </div>
+    </div>
+</section>
+
+<!-- ========================================== -->
+<!-- SECTION 4: PARTNERS SECTION                -->
+<!-- ========================================== -->
+<section id="partners" class="py-24 bg-deep-space border-b border-nd-blue/40">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center">
+        <span class="reveal font-space text-sm tracking-widest uppercase text-dome-gold block mb-2">Collaborative Alliances</span>
+        <h2 class="reveal delay-75 font-space font-bold text-3xl md:text-4xl uppercase tracking-wider text-white mb-6">Our Partners</h2>
+        <p class="reveal delay-150 font-inter text-gray-400 font-light max-w-xl mx-auto mb-12">
+            The Notre Dame Rocketry Team proudly collaborates alongside these stellar local organizations to execute our seasonal STEM outreach initiatives:
+        </p>
+
+        <!-- Placeholders Grid for Local Partner Logos -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="reveal p-8 bg-nd-blue/10 border border-nd-blue/20 rounded-lg flex items-center justify-center font-space text-sm tracking-widest text-gray-500 uppercase hover:border-dome-gold/30 transition-colors duration-300">
+                Partner Org Alpha
+            </div>
+            <div class="reveal delay-75 p-8 bg-nd-blue/10 border border-nd-blue/20 rounded-lg flex items-center justify-center font-space text-sm tracking-widest text-gray-500 uppercase hover:border-dome-gold/30 transition-colors duration-300">
+                Partner Org Beta
+            </div>
+            <div class="reveal delay-150 p-8 bg-nd-blue/10 border border-nd-blue/20 rounded-lg flex items-center justify-center font-space text-sm tracking-widest text-gray-500 uppercase hover:border-dome-gold/30 transition-colors duration-300">
+                Partner Org Gamma
+            </div>
+            <div class="reveal delay-225 p-8 bg-nd-blue/10 border border-nd-blue/20 rounded-lg flex items-center justify-center font-space text-sm tracking-widest text-gray-500 uppercase hover:border-dome-gold/30 transition-colors duration-300">
+                Partner Org Delta
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================== -->
+<!-- SECTION 5: LEADERSHIP & CONTACT FORM       -->
+<!-- ========================================== -->
+<section id="contact-leads" class="py-24 bg-[#03060d]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            
+            <!-- Left Side: Outreach Leads Profiles -->
+            <div class="reveal space-y-8">
+                <div>
+                    <h2 class="font-space font-bold text-3xl md:text-4xl uppercase tracking-wider text-white">Meet the <span class="text-dome-gold">Leads</span></h2>
+                    <div class="h-1 w-16 bg-dome-gold mt-4 mb-4"></div>
+                    <p class="font-inter text-gray-400 text-base font-light">
+                        Any educators, organizers, or interested parties are welcome to reach out directly to our current STEM Engagement leads to discuss tailored visits, mentorship programs, or events.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <!-- Profile: AJ Allen -->
+                    <div class="bg-deep-space border border-nd-blue p-6 rounded-lg shadow-lg hover:border-dome-gold/50 transition-colors">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-16 h-16 rounded-full bg-nd-blue/50 border border-nd-blue flex items-center justify-center overflow-hidden">
+                                <i class="fa-solid fa-user-astronaut text-2xl text-dome-gold"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-space font-bold text-white tracking-wider">AJ Allen</h4>
+                                <span class="font-space text-xs text-metal-gold uppercase tracking-widest">Outreach Lead</span>
+                            </div>
+                        </div>
+                        <a href="mailto:aallen25@nd.edu" class="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
+                            <i class="fa-solid fa-envelope text-dome-gold"></i> aallen25@nd.edu
+                        </a>
+                    </div>
+
+                    <!-- Profile: Claire Pettit -->
+                    <div class="bg-deep-space border border-nd-blue p-6 rounded-lg shadow-lg hover:border-dome-gold/50 transition-colors">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-16 h-16 rounded-full bg-nd-blue/50 border border-nd-blue flex items-center justify-center overflow-hidden">
+                                <i class="fa-solid fa-user-astronaut text-2xl text-dome-gold"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-space font-bold text-white tracking-wider">Claire Pettit</h4>
+                                <span class="font-space text-xs text-metal-gold uppercase tracking-widest">Outreach Lead</span>
+                            </div>
+                        </div>
+                        <a href="mailto:cpettit2@nd.edu" class="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
+                            <i class="fa-solid fa-envelope text-dome-gold"></i> cpettit2@nd.edu
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Contact Form -->
+            <div class="reveal delay-100 bg-deep-space border border-nd-blue p-8 md:p-10 rounded-lg shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-dome-gold to-metal-gold"></div>
+                <h3 class="font-space font-bold text-2xl uppercase tracking-wider text-white mb-6">Request an Event</h3>
+                
+                <form action="#" method="POST" class="space-y-5">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block font-space text-xs tracking-widest uppercase text-gray-400 mb-2">Name</label>
+                            <input type="text" class="nd-input" placeholder="Your Name" required>
+                        </div>
+                        <div>
+                            <label class="block font-space text-xs tracking-widest uppercase text-gray-400 mb-2">Email</label>
+                            <input type="email" class="nd-input" placeholder="Your Email Address" required>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block font-space text-xs tracking-widest uppercase text-gray-400 mb-2">School / Organization</label>
+                        <input type="text" class="nd-input" placeholder="E.g., St. Joseph High School" required>
+                    </div>
+
+                    <div>
+                        <label class="block font-space text-xs tracking-widest uppercase text-gray-400 mb-2">Message & Activity Details</label>
+                        <textarea class="nd-input h-32 resize-none" placeholder="Tell us about the event you have in mind..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 bg-dome-gold text-deep-space font-space font-black tracking-widest uppercase rounded shadow-xl hover:bg-white transition-all duration-300">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ========================================== -->
+<!-- METICULOUS STRUCTURAL FOOTER               -->
+<!-- ========================================== -->
+<footer class="bg-deep-space border-t border-nd-blue py-16 px-6 md:px-12">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
+        
+        <!-- Column 1: Divisions -->
+        <div class="space-y-4">
+            <h4 class="font-space font-bold text-sm tracking-widest uppercase text-dome-gold">Divisions</h4>
+            <ul class="font-inter text-sm text-gray-400 space-y-2 font-light">
+                <li><a href="usli.html" class="hover:text-white transition-colors">NASA USLI Project</a></li>
+                <li><a href="ndxp.html" class="hover:text-white transition-colors">Project NDXP</a></li>
+                <li><a href="outreach.html" class="hover:text-white text-dome-gold transition-colors font-medium">STEM Engagement</a></li>
+            </ul>
+        </div>
+
+        <!-- Column 2: Team Framework -->
+        <div class="space-y-4">
+            <h4 class="font-space font-bold text-sm tracking-widest uppercase text-dome-gold">Team Matrix</h4>
+            <ul class="font-inter text-sm text-gray-400 space-y-2 font-light">
+                <li><a href="index.html" class="hover:text-white transition-colors">Home Page</a></li>
+                <li><a href="leadership.html" class="hover:text-white transition-colors">Leadership Track</a></li>
+                <li><a href="sponsors.html" class="hover:text-white transition-colors">Sponsorship Matrix</a></li>
+            </ul>
+        </div>
+
+        <!-- Column 3: Support Details & Networks -->
+        <div class="space-y-4">
+            <h4 class="font-space font-bold text-sm tracking-widest uppercase text-dome-gold">Support Channels</h4>
+            <p class="font-inter text-sm text-gray-400 font-light">
+                Email all core inquiries to: <br>
+                <a href="mailto:ndrocketry@gmail.com" class="text-white hover:text-dome-gold transition-colors font-normal">ndrocketry@gmail.com</a>
+            </p>
+            <p class="font-inter text-xs text-gray-500 font-light pt-2">
+                Stay updated by joining our newsletter and following our social feeds.
+            </p>
+        </div>
+
+    </div>
+    
+    <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-nd-blue/40 text-center font-inter text-xs text-gray-600 font-light">
+        &copy; 2026 Notre Dame Rocketry Team. Managed under high-power aerospace competitive validation tracks.
+    </div>
+</footer>
+
+<!-- Document Reveal Animations Script -->
+<script>
+    function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+        for (var i = 0; i < reveals.length; i++) {
+            var windowHeight = window.innerHeight;
+            var elementTop = reveals[i].getBoundingClientRect().top;
+            var elementVisible = 100;
+            if (elementTop < windowHeight - elementVisible) {
+                reveals[i].classList.add("active");
+            }
+        }
+    }
+    window.addEventListener("scroll", reveal);
+    reveal(); // Fire dynamic initialization check instantly on load
+</script>
+
+</body>
+</html>
